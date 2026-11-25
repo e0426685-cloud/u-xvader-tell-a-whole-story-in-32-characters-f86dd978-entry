@@ -9,6 +9,8 @@ import os
 
 ENTRY_TEXT = "She Left, The WiFi Stayed, I Won"
 
+MAX_CHARS = 32
+
 OUTPUT_PATH = "/output/entry.txt"
 
 
@@ -16,7 +18,7 @@ def main() -> None:
     text = ENTRY_TEXT.strip()
     lines = text.splitlines()
     assert len(lines) == 1, "entry must be a single line"
-    assert 1 <= len(text) <= 32, "entry must be 1-32 chars"
+    assert 1 <= len(text) <= MAX_CHARS, "entry must be 1-32 chars"
     assert text == text.strip(), "no leading/trailing whitespace"
     assert all(ord(ch) >= 32 for ch in text), "no control characters"
     os.makedirs("/output", exist_ok=True)
